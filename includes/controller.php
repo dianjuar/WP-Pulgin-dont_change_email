@@ -1,17 +1,17 @@
 <?php
 
-if( !class_exists('dont_change_email') ) {
+namespace dont_change_email;
+
+if( !class_exists('dont_change_email\model') ) {
 
 /**
+ * Here is where the logic is coded
  * Class to don't allow certain users to change their email.
  */
-class dont_change_email {
+class controller {
 
     function __construct() {
 
-        /**
-         * 
-         */
         add_action('personal_options_update', 
             array( $this, 'user_profile_update'), 1, 1);
     }
@@ -40,6 +40,6 @@ class dont_change_email {
 
 }# End class
 
-$dont_change_email = new dont_change_email();
+$controller = new controller();
 
 }

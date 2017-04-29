@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-if ( !class_exists('View_Own_Posts_Media_Only_Patch') ) {
+if ( !class_exists('dont_change_email\model') ) {
     # -------------------------------------  Define Constants ON   -------------------------------------
 	define( 'DCE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 	define( 'DCE_PLUGIN_DIRNAME', plugin_basename(dirname(__FILE__)));
@@ -22,5 +22,5 @@ if ( !class_exists('View_Own_Posts_Media_Only_Patch') ) {
     # -------------------------------------  Define Constants OFF   ------------------------------------
 
     # plugin includes
-	require_once(DCE_PLUGIN_DIR . '/includes/class_dont_change_email.php');
+	require_once(DCE_PLUGIN_DIR . '/includes/controller.php');
 }
