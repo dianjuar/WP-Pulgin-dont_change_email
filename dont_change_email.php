@@ -23,4 +23,5 @@ if ( !class_exists('dont_change_email\model') ) {
 
     # plugin includes
 	require_once(DCE_PLUGIN_DIR . '/includes/controller.php');
+	require_once(DCE_PLUGIN_DIR . '/includes/settings-page.php');
 }
