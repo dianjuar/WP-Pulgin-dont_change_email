@@ -1,0 +1,57 @@
+# Copyright (C) 2017 Don't Change Email
+# This file is distributed under the same license as the Don't Change Email package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Don't Change Email 0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/"
+"dont_change_email\n"
+"POT-Creation-Date: 2017-05-01 18:51-0400\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-05-01 18:53-0400\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.0.1\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: includes/controller.php:55
+msgid "You are not supposed to change your email!"
+msgstr "¡No se supone que debas cambiar tu correo electrónico!"
+
+#: includes/disable-email-field.php:44
+msgid "Emails can not be changed"
+msgstr "Los correos electrónicos no pueden ser modificados"
+
+#: includes/settings-page.php:42 includes/settings-page.php:43
+#: includes/settings-page.php:58
+msgid "Modify Email Policy"
+msgstr "Modificar Políticas de Correo Electrónico"
+
+#: includes/settings-page.php:59
+msgid "Select the roles that <em>CAN NOT</em> change their emails"
+msgstr ""
+"Seleccione los roles que <em>NO PUEDEN</em> cambiar el correo"
+
+#. Plugin Name of the plugin/theme
+msgid "Don't Change Email"
+msgstr "No Cambiar el Correo Electrónico"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/dianjuar/dont_change_email"
+msgstr "https://github.com/dianjuar/dont_change_email"
+
+#. Description of the plugin/theme
+msgid "Don't change the email of certain user roles"
+msgstr ""
+"No cambiar el correo electrónico de determinados roles de "
+"usuario"
+
+#. Author of the plugin/theme
+msgid "Diego Juliao"
+msgstr "Diego Juliao"
+
+#. Author URI of the plugin/theme
+msgid "http://about.me/dianjuar"
+msgstr "http://about.me/dianjuar"

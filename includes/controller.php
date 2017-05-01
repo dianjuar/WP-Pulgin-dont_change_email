@@ -52,7 +52,7 @@ class controller {
         $this->script_enqueer = new Disable_Email_Field($this->options_roles_CNCE,
                                                         array($this, 'current_user_can_edit_its_email'));
 
-        $this->error_message =  __('You are not suppose to change your email!', DCE);
+        $this->error_message =  __('You are not supposed to change your email!', DCE);
 
         if(is_admin())
             $this->my_settings_page = new Settings_Page($this->options_roles_CNCE);
@@ -64,6 +64,10 @@ class controller {
         if(is_woocommerce_active())
             add_action('woocommerce_save_account_details_errors', 
                 array( $this, 'user_profile_update_woocommerceDashboard'), 10, 2);
+
+        # i18n
+        add_action('plugins_loaded', 
+            array($this, 'load_domain'));
     }
 
     /**
@@ -110,7 +114,7 @@ class controller {
 
         # If the user change the email STOP everything
         if( $new_email !== $old_email )
-            return $this->error_message;
+            return wp_die($this->error_message);
     }
 
     /**
@@ -132,6 +136,15 @@ class controller {
         }
 
         return true;
+    }
+
+
+    /**
+     * I18N
+     * Load the text domain
+     */
+    public function load_domain() {
+        load_plugin_textdomain( DCE, false, DCE_PLUGIN_DIRNAME.'/languages' );
     }
 
     /**
