@@ -60,8 +60,10 @@ class controller {
         add_action('personal_options_update', 
             array( $this, 'user_profile_update_WPdashboard'), 1, 1);
 
-        add_action('woocommerce_save_account_details_errors', 
-            array( $this, 'user_profile_update_woocommerceDashboard'), 10, 2);
+        # Only enqueue the script if the woocommerce is active
+        if(is_woocommerce_active())
+            add_action('woocommerce_save_account_details_errors', 
+                array( $this, 'user_profile_update_woocommerceDashboard'), 10, 2);
     }
 
     /**
@@ -108,7 +110,7 @@ class controller {
 
         # If the user change the email STOP everything
         if( $new_email !== $old_email )
-            return $this->error_message;
+            return wp_die($this->error_message);
     }
 
     /**
@@ -144,4 +146,24 @@ class controller {
 
 $controller = new controller();
 
+}
+
+
+/**
+ * Check if WooCommerce is active
+ * @return boolean True  - If the plugin IS active
+ *                 False - If the plugin IS NOT active
+ * @ref https://wordpress.stackexchange.com/questions/193907/how-to-check-if-a-plugin-woocommerce-is-active
+ **/
+function is_woocommerce_active()
+{
+    if ( 
+    in_array( 
+        'woocommerce/woocommerce.php', 
+        apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) 
+        ) 
+    )
+        return true;
+
+    return false;
 }
