@@ -1,3 +1,9 @@
+/**
+ * Using wp_localize_script will send the next variables:
+ *
+ * @param {string} message_not_able_change_email
+ *         		   Just a message with i18n to show to the user that is no possible change the email.
+ */
 jQuery(function($) {
 	
     var emailElement = $('#email');
