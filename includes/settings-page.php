@@ -55,7 +55,7 @@ class Settings_Page {
         ?>
         <div class="wrap">
             <h1><?= __("Modify Email policy", DCE) ?></h1>
-            <h4><?= __("Select the roles that can not change their emails", DCE) ?> </h4>
+            <h4><?= __("Select the roles that <em>CAN NOT</em> change their emails", DCE) ?> </h4>
 
             <form method="post" action="options.php">
                 <?php 
