@@ -45,9 +45,11 @@ class Disable_Email_Field {
 
         add_action('admin_enqueue_scripts', 
             array($this, 'enqueueScrp_disable_field_in_WPdashboard'));
-        
-        add_action('wp_enqueue_scripts', 
-            array($this, 'enqueueScrp_disable_field_in_WOOdashboard'));
+
+        # Only enqueue the script if the woocommerce is active
+        if(is_woocommerce_active())
+            add_action('wp_enqueue_scripts', 
+                array($this, 'enqueueScrp_disable_field_in_WOOdashboard'));
     }
 
     public function enqueueScrp_disable_field_in_WPdashboard() {
