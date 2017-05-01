@@ -30,10 +30,18 @@ class Disable_Email_Field {
      */
     protected $current_user_can_edit_its_email;
 
+    /**
+     * Message to show the user telling him that is not possible to change the email.
+     * @var string
+     */
+    public $message_to_show;
+
 	function __construct($options_roles_CNCE, $current_user_can_edit_its_email) {
 
         $this->options_roles_CNCE = $options_roles_CNCE;
         $this->current_user_can_edit_its_email = $current_user_can_edit_its_email;
+
+        $this->message_to_show = __("Emails can not be changed",DCE);
 
 		add_action('admin_enqueue_scripts', 
 			array($this, 'enqueueScrp_disable_field_in_WPdashboard'));
@@ -60,7 +68,7 @@ class Disable_Email_Field {
         # Apply i18n to the message shown.
         wp_localize_script( 'disable_email_field_wpdashboard', 
                             'message_not_able_change_email', 
-                            __("Emails can not be changed",DCE));
+                            $this->message_to_show);
 	}
 
 
