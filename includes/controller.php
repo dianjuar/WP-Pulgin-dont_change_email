@@ -38,27 +38,57 @@ class controller {
      */
     protected $my_settings_page;
 
+    /**
+     * Error message to be shown when a user cheats to change the email.
+     * @var string
+     */
+    protected $error_message;
+
     function __construct() {
         # Read who can not change its email
         $this->options_roles_CNCE = get_option('user_roles');
 
-        # Init the Emial fields disabler class
+        # Init the Email fields disabler class
         $this->script_enqueer = new Disable_Email_Field($this->options_roles_CNCE,
                                                         array($this, 'current_user_can_edit_its_email'));
+
+        $this->error_message =  __('You are not suppose to change your email!', DCE);
 
         if(is_admin())
             $this->my_settings_page = new Settings_Page($this->options_roles_CNCE);
 
         add_action('personal_options_update', 
-            array( $this, 'user_profile_update'), 1, 1);
+            array( $this, 'user_profile_update_WPdashboard'), 1, 1);
+
+        add_action('woocommerce_save_account_details_errors', 
+            array( $this, 'user_profile_update_woocommerceDashboard'), 10, 2);
     }
 
     /**
-     * Triggers when the user update its profile
+     * Triggers when the user update its email in the woocomerse dashboard 
+     * @param  WP_Error &$errors Errors to be shown
+     * @param  WP_user &$user   User Email
+     */
+    public function user_profile_update_woocommerceDashboard(&$errors, &$user) {
+        # If the current user CAN change its email... do nothing.
+        if( $this->current_user_can_edit_its_email() )
+            return;
+
+        $new_email = $user->user_email;
+        $old_email = get_user_by( 'id', $user->ID )->data->user_email;
+
+        if( $new_email !== $old_email ) {
+            $user->user_email = $old_email;
+            $errors->add('cannot_change_email', $this->error_message);
+        }
+    }
+
+    /**
+     * Triggers when the user update its email in the WP dashboard
      * @param  int  $user_id
      *              The current user ID
      */
-    public function user_profile_update( $user_id ) {
+    public function user_profile_update_WPdashboard( $user_id ) {
 
         # If the current user can not do this... GET OUT OF HERE
         if ( !current_user_can('edit_user',$user_id) )
@@ -71,14 +101,14 @@ class controller {
         # ------- Verify If the current user changes its email -------
     
         # The new email of the user
-        $new_email = $_POST['email'];
+        $new_email = isset($_POST['email']) ? $_POST['email']:$_POST['account_email'];
 
         # Old Email of the user
         $old_email = get_user_by( 'id', $user_id )->data->user_email;
 
         # If the user change the email STOP everything
         if( $new_email !== $old_email )
-            return wp_die( __('<h1>You are Cheating!!!!</h1> We are calling the Internet Police right NOW!', DCE) );
+            return $this->error_message;
     }
 
     /**
