@@ -51,14 +51,14 @@ class Disable_Email_Field {
         if( call_user_func( $this->current_user_can_edit_its_email ) )
             return;
 
-		wp_enqueue_script( 'handle_name', 
-						   DCE_PLUGIN_URL.'/js/disable_email_field_wpdashboard.js', 
-						   array('jquery'), 
-						   '0.0',
-						   false);
+        wp_enqueue_script( 'disable_email_field_wpdashboard', 
+                           DCE_PLUGIN_URL.'/js/disable_email_field_wpdashboard.js', 
+                           array('jquery'), 
+                           '0.0',
+                           false);
 
         # Apply i18n to the message shown.
-        wp_localize_script( 'handle_name', 
+        wp_localize_script( 'disable_email_field_wpdashboard', 
                             'message_not_able_change_email', 
                             __("Emails can not be changed",DCE));
 	}
