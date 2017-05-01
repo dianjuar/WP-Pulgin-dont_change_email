@@ -52,7 +52,7 @@ class controller {
         $this->script_enqueer = new Disable_Email_Field($this->options_roles_CNCE,
                                                         array($this, 'current_user_can_edit_its_email'));
 
-        $this->error_message =  __('You are not suppose to change your email!', DCE);
+        $this->error_message =  __('You are not supposed to change your email!', DCE);
 
         if(is_admin())
             $this->my_settings_page = new Settings_Page($this->options_roles_CNCE);
