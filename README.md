@@ -19,7 +19,7 @@ Don't allow them to change it on the Woocommerce dashboard.
 
 ![Woocommerce Dashboard](http://i.imgur.com/ZzOgEVj.png)
 
->_The Woocommerce plugin is not restrictive_. You don't need it plugin to use this plugin.
+>_The Woocommerce plugin is not restrictive_. You don't need it to use this one.
 
 ### **Secure**
 #### Restriction on server side.
