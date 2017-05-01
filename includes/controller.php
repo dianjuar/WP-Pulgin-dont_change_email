@@ -36,10 +36,17 @@ class controller {
      *              The current user ID
      */
     public function user_profile_update( $user_id ) {
-        // If the current user can not do this... GET OUT OF HERE
+
+        # If the current user can not do this... GET OUT OF HERE
         if ( !current_user_can('edit_user',$user_id) )
             return;
 
+        # If the current user CAN change its email... do nothing.
+        if( $this->current_user_can_edit_its_email() )
+            return;
+
+        # ------- Verify If the current user changes its email -------
+    
         # The new email of the user
         $new_email = $_POST['email'];
 
@@ -52,11 +59,31 @@ class controller {
     }
 
     /**
+     * Determinate if the current user can change its email
+     * @return Boolean
+     * @example True - The current user CAN CHANGE its email
+     *          False - The current user CAN NOT CHANGE its email
+     */
+    protected function current_user_can_edit_its_email() {
+
+        # Get the current user roles
+        $current_user_roles = wp_get_current_user()->roles;
+
+        foreach ($this->options_roles_CNCE as $role_ID => $value) {
+            $is_it = in_array( $role_ID, $current_user_roles);
+
+            if($is_it)
+                return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Options getter
      * @return Array
      */
-    public function get_options()
-    {
+    public function get_options() {
         return $this->options_roles_CNCE;
     }
 
