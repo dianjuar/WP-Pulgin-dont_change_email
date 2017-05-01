@@ -24,6 +24,7 @@ class Settings_Page {
      * Start up
      * @param Array     $options_roles_CNCE 
      *                  Options readed from the data base.
+     *                  This contains the roles that can not change their emails
      */
     public function __construct($options_roles_CNCE) {
 
