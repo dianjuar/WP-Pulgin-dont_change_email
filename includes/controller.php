@@ -110,7 +110,7 @@ class controller {
 
         # If the user change the email STOP everything
         if( $new_email !== $old_email )
-            return $this->error_message;
+            return wp_die($this->error_message);
     }
 
     /**
