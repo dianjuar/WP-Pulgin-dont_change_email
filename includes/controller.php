@@ -64,6 +64,10 @@ class controller {
         if(is_woocommerce_active())
             add_action('woocommerce_save_account_details_errors', 
                 array( $this, 'user_profile_update_woocommerceDashboard'), 10, 2);
+
+        # i18n
+        add_action('plugins_loaded', 
+            array($this, 'load_domain'));
     }
 
     /**
@@ -132,6 +136,15 @@ class controller {
         }
 
         return true;
+    }
+
+
+    /**
+     * I18N
+     * Load the text domain
+     */
+    public function load_domain() {
+        load_plugin_textdomain( DCE, false, DCE_PLUGIN_DIRNAME.'/languages' );
     }
 
     /**
