@@ -5,14 +5,14 @@
 
 ## Features
 
-### **Role Selector**
+### **👥 Role Selector 👥**
 #### Select which roles **can not** change their email.
 
 Select the roles that can not change it trough a settings page in the WordPress dashboard.
 
 ![Role Selector Image](http://i.imgur.com/qXwd8vW.png)
 
-### **Woocommerce Support**
+### **🛒 Woocommerce Support 🛒**
 #### Full support for woocommerce
 
 Don't allow them to change it on the Woocommerce dashboard.
@@ -21,7 +21,7 @@ Don't allow them to change it on the Woocommerce dashboard.
 
 >_The Woocommerce plugin is not restrictive_. You don't need it to use this one.
 
-### **Secure**
+### **🔐 Secure 🔐**
 #### Restriction on server side.
 This plugin **doesn't just disable the email field** on the view using JavaScript. The logic is on server side. 
 
@@ -31,6 +31,14 @@ In case that a techy user modify the html template using an inspector element to
 ![secure woocommerce](http://i.imgur.com/BCUA2F1.png) 
 ##### WordPress Dashboard
 ![secure wpdashboard](http://i.imgur.com/NVPMMys.png)
+
+### **🌐 i18n 🌐**
+#### This plugin counts witch Internationalization (i18n)
+
+That means that is possible to localize it or translate to any language
+
+### **🇪🇸100% Translated to Spanish🇪🇸**
+#### This plugin has already full support to Spanish language.
 
 __________________
 
