@@ -125,6 +125,10 @@ class controller {
      */
     public function current_user_can_edit_its_email() {
 
+        # If any one can edit its email there is nothing to do.
+        if( !$this->are_there_roles() )
+            return true;
+
         # Get the current user roles
         $current_user_roles = wp_get_current_user()->roles;
 
@@ -138,6 +142,15 @@ class controller {
         return true;
     }
 
+    /**
+     * If are roles to be restricted to don't change the email.
+     * @return boolean True  - if there are (is the same to say if on $options_roles_CNCE are roles)
+     *                 False - there are not ( $options_roles_CNCE is empty )
+     */
+    public function are_there_roles()
+    {
+        return is_array( $this->options_roles_CNCE );
+    }
 
     /**
      * I18N
