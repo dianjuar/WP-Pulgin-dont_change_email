@@ -67,9 +67,10 @@ class Settings_Page {
 
                 foreach ($roles as $rol_ID => $rol):
                     $is_current_role_checked = isset($this->options_roles_CNCE[$rol_ID]) ? 'checked=checked':'';
+                    # name=DCE_user_roles_cantnot_change_email['editor']
                 ?>
                     <input  type="checkbox" 
-                            name="user_roles[<?= $rol_ID ?>]"
+                            name="<?= controller::OPTIONKEY_ROLES ?>[<?= $rol_ID ?>]"
                             <?= $is_current_role_checked ?>
                     > 
                     <?= $rol['name']?> <br>
@@ -90,6 +91,6 @@ class Settings_Page {
      */
     public function register_dont_change_email_settings() {
         # register our settings
-        register_setting( 'dont_change_email_settings_group', 'user_roles' );
+        register_setting( 'dont_change_email_settings_group', controller::OPTIONKEY_ROLES );
     }
 }

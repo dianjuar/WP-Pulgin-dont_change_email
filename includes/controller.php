@@ -14,6 +14,7 @@ require_once(dirname(__FILE__).'/disable-email-field.php');
  */
 class controller {
 
+    const OPTIONKEY_ROLES = "DCE_user_roles_cantnot_change_email";
     /**
      * The user roles that can not change their email
      * @var Array 
@@ -46,7 +47,7 @@ class controller {
 
     function __construct() {
         # Read who can not change its email
-        $this->options_roles_CNCE = get_option('user_roles');
+        $this->options_roles_CNCE = get_option(self::OPTIONKEY_ROLES);
 
         # Init the Email fields disabler class
         $this->script_enqueer = new Disable_Email_Field($this->options_roles_CNCE,
