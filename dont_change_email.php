@@ -3,7 +3,7 @@
 Plugin Name: Don't Change Email
 Description: Don't change the email of certain user roles
 Plugin URI: https://github.com/dianjuar/dont_change_email
-Version: 0.1
+Version: 1.0.3
 Author: Diego Juliao
 Author URI: http://about.me/dianjuar
 Text Domain: dont_change_email
